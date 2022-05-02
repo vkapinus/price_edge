@@ -16,7 +16,6 @@
 package com.qaprosoft.carina.demo.gui.pages;
 
 import java.lang.invoke.MethodHandles;
-import java.util.List;
 
 import com.qaprosoft.carina.demo.gui.components.AddNewWidget;
 import org.openqa.selenium.WebDriver;
@@ -87,11 +86,14 @@ public class DashboardHomePage extends AbstractPage {
     }
 
     public void signOut(){
-        userIcon.click();
+        if(!userName.isPresent()){
+            userIcon.click();
+        }
         signOutButton.click();
     }
 
     public boolean userDropdownMenuCorrect(){
+        userIcon.click();
         return userName.isPresent() && userPreferencesLink.isPresent() &&
                 userKnowledgeBaseLink.isPresent() && userSubmitRequestLink.isPresent() &&
                 userChangePasswordLink.isPresent();
