@@ -42,6 +42,8 @@ public class DashboardTests implements IAbstractTest {
     SoftAssert softAssert = new SoftAssert();
     DashboardHomePage dashboardHomePage = new DashboardHomePage(getDriver());
     LoginPage loginPage = new LoginPage(getDriver());
+    ItemsPage itemsPage = new ItemsPage(getDriver());
+
 
 
     @TestRailCases(testCasesId = "1,2")
@@ -88,7 +90,6 @@ public class DashboardTests implements IAbstractTest {
         String itemNumber = "000000000001";
         String itemName = "TEST_PRODUCT";
         dashboardHomePage.openPriceObjectElementByName("Items");
-        ItemsPage itemsPage = new ItemsPage(getDriver());
         softAssert.assertTrue(itemsPage.isPageOpened(), "Items page is not opened");
         AddNewItem addNewItem = itemsPage.openAddItemModal();
         addNewItem.addNewItem(itemNumber, itemName);
