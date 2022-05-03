@@ -38,11 +38,9 @@ import com.qaprosoft.carina.demo.gui.pages.DashboardHomePage;
  */
 public class DashboardTests implements IAbstractTest {
 
-
     SoftAssert softAssert = new SoftAssert();
     DashboardHomePage dashboardHomePage = new DashboardHomePage(getDriver());
     LoginPage loginPage = new LoginPage(getDriver());
-    ItemsPage itemsPage = new ItemsPage(getDriver());
 
 
 
@@ -82,6 +80,8 @@ public class DashboardTests implements IAbstractTest {
         dashboardHomePage.signOut();
         softAssert.assertAll();
     }
+
+
     @TestRailCases(testCasesId = "7,8")
     @Test(groups ={"MA"})
     public void verifyPossibilityItemAdding(){
@@ -89,7 +89,7 @@ public class DashboardTests implements IAbstractTest {
         loginPage.login(R.TESTDATA.get("email"), R.TESTDATA.get("password"));
         String itemNumber = "000000000001";
         String itemName = "TEST_PRODUCT";
-        dashboardHomePage.openPriceObjectElementByName("Items");
+        ItemsPage itemsPage  = dashboardHomePage.openPriceObjectElementByName("Items");
         softAssert.assertTrue(itemsPage.isPageOpened(), "Items page is not opened");
         AddNewItem addNewItem = itemsPage.openAddItemModal();
         addNewItem.addNewItem(itemNumber, itemName);
@@ -99,5 +99,4 @@ public class DashboardTests implements IAbstractTest {
         softAssert.assertFalse(itemsPage.isItemByNumberPresent(itemNumber), "Item was not removed");
         softAssert.assertAll();
     }
-
 }

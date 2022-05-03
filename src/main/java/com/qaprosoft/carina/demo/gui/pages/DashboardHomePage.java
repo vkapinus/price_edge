@@ -126,9 +126,10 @@ public class DashboardHomePage extends AbstractPage {
         removeWidget.click();
     }
 
-    public void openPriceObjectElementByName(String objectName){
+    public ItemsPage openPriceObjectElementByName(String objectName){
         priceObjectsHeaderButton.click();
         priceObjectElement.format(objectName).click();
+        return new ItemsPage(getDriver());
     }
 
 
