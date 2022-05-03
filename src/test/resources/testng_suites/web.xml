@@ -34,4 +34,14 @@
 		</classes>
 	</test>
 
+	<test name="PDP Functionality Test: 7,8" enabled="true">
+		<classes>
+			<class name="com.qaprosoft.carina.demo.DashboardTests">
+				<methods>
+					<include name="verifyPossibilityItemAdding"/>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
 </suite>

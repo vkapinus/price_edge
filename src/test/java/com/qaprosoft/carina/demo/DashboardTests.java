@@ -79,8 +79,8 @@ public class DashboardTests implements IAbstractTest {
         softAssert.assertFalse(dashboardHomePage.isWidgetPresent(), "Widget is not removed from dashboard");
         softAssert.assertAll();
     }
-
-    @Test
+    @TestRailCases(testCasesId = "7,8")
+    @Test(groups ={"MA"})
     public void verifyPossibilityItemAdding(){
         String itemNumber = "000000000001";
         String itemName = "TEST_PRODUCT";
