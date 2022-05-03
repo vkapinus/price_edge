@@ -1,0 +1,19 @@
+reporting:
+  enabled: true
+  project-key: PEDGE
+  server:
+    hostname: https://solvdinternal.zebrunner.com
+    access-token: i44SWrL2eZOSBkCK1w94HsWt1V8GzMxZdaoPlgrCXRFMxNicRS
+  run:
+    display-name: Smoke suit
+    build: 2.5.3.96-SNAPSHOT
+    environment: PROD
+    #    locale: en_US
+#    retry-known-issues: false
+#  notification:
+#    notify-on-each-failure: true
+#    slack-channels: automation, dev-team
+#    ms-teams-channels: automation, qa-team
+#    emails: boss@example.com
+#  milestone:
+#    name: Release 2.5.3

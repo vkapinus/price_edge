@@ -23,6 +23,8 @@ import com.qaprosoft.carina.demo.gui.components.AddNewItem;
 import com.qaprosoft.carina.demo.gui.components.AddNewWidget;
 import com.qaprosoft.carina.demo.gui.pages.ItemsPage;
 import com.qaprosoft.carina.demo.gui.pages.LoginPage;
+import com.zebrunner.agent.core.annotation.Maintainer;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -36,19 +38,25 @@ import com.qaprosoft.carina.demo.gui.pages.DashboardHomePage;
  *
  * @author qpsdemo
  */
+@Maintainer("vkapinus")
 public class DashboardTests implements IAbstractTest {
 
-    SoftAssert softAssert = new SoftAssert();
-    DashboardHomePage dashboardHomePage = new DashboardHomePage(getDriver());
-    LoginPage loginPage = new LoginPage(getDriver());
+    private LoginPage loginPage;
+
+    @BeforeTest
+     void openLoginPage(){
+        loginPage = new LoginPage(getDriver());
+        loginPage.open();
+        loginPage.login(R.TESTDATA.get("email"), R.TESTDATA.get("password"));
+    }
 
 
 
     @TestRailCases(testCasesId = "1,2")
     @Test(groups ={"MA"})
     public void verifyPossibilityLoginAndLogout(){
-        loginPage.open();
-        loginPage.login(R.TESTDATA.get("email"), R.TESTDATA.get("password"));
+        SoftAssert softAssert = new SoftAssert();
+        DashboardHomePage dashboardHomePage = new DashboardHomePage(getDriver());
         softAssert.assertTrue(dashboardHomePage.isPageOpened(), "Dashboard home page is not opened");
         softAssert.assertTrue(dashboardHomePage.userDropdownMenuCorrect(), "Dropdown menu is not correct");
         dashboardHomePage.signOut();
@@ -59,8 +67,8 @@ public class DashboardTests implements IAbstractTest {
     @TestRailCases(testCasesId = "3,4,5,6")
     @Test(groups ={"MA"})
     public void verifyPossibilityWidgetAdding() {
-        loginPage.open();
-        loginPage.login(R.TESTDATA.get("email"), R.TESTDATA.get("password"));
+        SoftAssert softAssert = new SoftAssert();
+        DashboardHomePage dashboardHomePage = new DashboardHomePage(getDriver());
         softAssert.assertTrue(dashboardHomePage.isAddAnyWidgetsTextPresent(), "Add any widgets text is not present");
         AddNewWidget addNewWidget = dashboardHomePage.clickAddNewWidgetButton();
         softAssert.assertTrue(addNewWidget.isSelectNewWidgetModalOpened(), "Select widget modal is not opened");
@@ -77,7 +85,6 @@ public class DashboardTests implements IAbstractTest {
         dashboardHomePage.clickAddNewWidgetButton();
         addNewWidget.selectWidget(1);
         softAssert.assertFalse(dashboardHomePage.isWidgetPresent(), "Widget is not removed from dashboard");
-        dashboardHomePage.signOut();
         softAssert.assertAll();
     }
 
@@ -85,10 +92,10 @@ public class DashboardTests implements IAbstractTest {
     @TestRailCases(testCasesId = "7,8")
     @Test(groups ={"MA"})
     public void verifyPossibilityItemAdding(){
-        loginPage.open();
-        loginPage.login(R.TESTDATA.get("email"), R.TESTDATA.get("password"));
+        SoftAssert softAssert = new SoftAssert();
         String itemNumber = "000000000001";
         String itemName = "TEST_PRODUCT";
+        DashboardHomePage dashboardHomePage = new DashboardHomePage(getDriver());
         ItemsPage itemsPage  = dashboardHomePage.openPriceObjectElementByName("Items");
         softAssert.assertTrue(itemsPage.isPageOpened(), "Items page is not opened");
         AddNewItem addNewItem = itemsPage.openAddItemModal();
