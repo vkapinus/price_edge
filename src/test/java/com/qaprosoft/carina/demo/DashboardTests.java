@@ -24,7 +24,7 @@ import com.qaprosoft.carina.demo.gui.components.AddNewWidget;
 import com.qaprosoft.carina.demo.gui.pages.ItemsPage;
 import com.qaprosoft.carina.demo.gui.pages.LoginPage;
 import com.zebrunner.agent.core.annotation.Maintainer;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -43,7 +43,7 @@ public class DashboardTests implements IAbstractTest {
 
     private LoginPage loginPage;
 
-    @BeforeTest
+    @BeforeSuite
      void openLoginPage(){
         loginPage = new LoginPage(getDriver());
         loginPage.open();
@@ -60,6 +60,7 @@ public class DashboardTests implements IAbstractTest {
         softAssert.assertTrue(dashboardHomePage.isPageOpened(), "Dashboard home page is not opened");
         softAssert.assertTrue(dashboardHomePage.userDropdownMenuCorrect(), "Dropdown menu is not correct");
         dashboardHomePage.signOut();
+        loginPage = new LoginPage(getDriver());
         softAssert.assertTrue(loginPage.isPageOpened(), "Login page is not opened");
         softAssert.assertAll();
     }
@@ -67,6 +68,8 @@ public class DashboardTests implements IAbstractTest {
     @TestRailCases(testCasesId = "3,4,5,6")
     @Test(groups ={"MA"})
     public void verifyPossibilityWidgetAdding() {
+        loginPage = new LoginPage(getDriver());
+        loginPage.login(R.TESTDATA.get("email"), R.TESTDATA.get("password"));
         SoftAssert softAssert = new SoftAssert();
         DashboardHomePage dashboardHomePage = new DashboardHomePage(getDriver());
         softAssert.assertTrue(dashboardHomePage.isAddAnyWidgetsTextPresent(), "Add any widgets text is not present");
