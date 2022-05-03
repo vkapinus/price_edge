@@ -24,7 +24,7 @@ import com.qaprosoft.carina.core.foundation.api.http.HttpMethodType;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import com.qaprosoft.carina.core.foundation.utils.Configuration;
 
-@Endpoint(url = "${base_url}/users/1", methodType = HttpMethodType.DELETE)
+@Endpoint(url = "${base_url}/api/priceobjects/Items", methodType = HttpMethodType.DELETE)
 @RequestTemplatePath(path = "api/users/_delete/rq.json")
 @ResponseTemplatePath(path = "api/users/_delete/rs.json")
 @SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)

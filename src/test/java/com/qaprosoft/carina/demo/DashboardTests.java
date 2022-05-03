@@ -19,7 +19,9 @@ package com.qaprosoft.carina.demo;
 import com.qaprosoft.carina.core.foundation.report.testrail.TestRailCases;
 
 import com.qaprosoft.carina.core.foundation.utils.R;
+import com.qaprosoft.carina.demo.gui.components.AddNewItem;
 import com.qaprosoft.carina.demo.gui.components.AddNewWidget;
+import com.qaprosoft.carina.demo.gui.pages.ItemsPage;
 import com.qaprosoft.carina.demo.gui.pages.LoginPage;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -56,7 +58,7 @@ public class DashboardTests implements IAbstractTest {
 
     @TestRailCases(testCasesId = "3,4,5,6")
     @Test(groups ={"MA"})
-    public void verifyPossibilityWidgetAdding(){
+    public void verifyPossibilityWidgetAdding() {
         loginPage.open();
         loginPage.login(R.TESTDATA.get("email"), R.TESTDATA.get("password"));
         softAssert.assertTrue(dashboardHomePage.isAddAnyWidgetsTextPresent(), "Add any widgets text is not present");
@@ -78,7 +80,23 @@ public class DashboardTests implements IAbstractTest {
         softAssert.assertAll();
     }
 
-
+    @Test
+    public void verifyPossibilityItemAdding(){
+        String itemNumber = "000000000001";
+        String itemName = "TEST_PRODUCT";
+        loginPage.open();
+        loginPage.login(R.TESTDATA.get("email"), R.TESTDATA.get("password"));
+        dashboardHomePage.openPriceObjectElementByName("Items");
+        ItemsPage itemsPage = new ItemsPage(getDriver());
+        softAssert.assertTrue(itemsPage.isPageOpened(), "Items page is not opened");
+        AddNewItem addNewItem = itemsPage.openAddItemModal();
+        addNewItem.addNewItem(itemNumber, itemName);
+        softAssert.assertTrue(itemsPage.isPageOpened(), "Items page is not opened");
+        softAssert.assertTrue(itemsPage.isItemByNumberPresent(itemNumber), "Item was not added");
+        itemsPage.deleteItemByNumber(itemNumber);
+        softAssert.assertFalse(itemsPage.isItemByNumberPresent(itemNumber), "Item was not removed");
+        softAssert.assertAll();
+    }
 
 
 }

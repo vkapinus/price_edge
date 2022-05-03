@@ -75,6 +75,12 @@ public class DashboardHomePage extends AbstractPage {
     @FindBy(xpath = "//div[text() = 'Remove']")
     private ExtendedWebElement removeWidget;
 
+    @FindBy(xpath = "//button[text() = 'Price Objects']")
+    private ExtendedWebElement priceObjectsHeaderButton;
+
+    @FindBy(xpath = "//ul[@class = 'bp3-menu']/li/a/div[contains(text(), '%s')]")
+    private ExtendedWebElement priceObjectElement;
+
 
     public DashboardHomePage(WebDriver driver) {
         super(driver);
@@ -118,6 +124,11 @@ public class DashboardHomePage extends AbstractPage {
         widgets.click();
         actionsButton.click();
         removeWidget.click();
+    }
+
+    public void openPriceObjectElementByName(String objectName){
+        priceObjectsHeaderButton.click();
+        priceObjectElement.format(objectName).click();
     }
 
 

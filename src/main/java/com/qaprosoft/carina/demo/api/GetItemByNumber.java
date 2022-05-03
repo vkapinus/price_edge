@@ -23,12 +23,14 @@ import com.qaprosoft.carina.core.foundation.api.http.HttpMethodType;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import com.qaprosoft.carina.core.foundation.utils.Configuration;
 
-@Endpoint(url = "${base_url}/users", methodType = HttpMethodType.GET)
-@ResponseTemplatePath(path = "api/users/_get/rs.json")
+@Endpoint(url = "${base_url}/api/priceobjects/Items/${itemNumber}/ManualPrices", methodType = HttpMethodType.GET)
+@ResponseTemplatePath(path = "api/objects/_get/rs.json")
 @SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)
-public class GetUserMethods extends AbstractApiMethodV2 {
 
-    public GetUserMethods() {
+public class GetItemByNumber extends AbstractApiMethodV2 {
+
+    public GetItemByNumber(String itemNumber) {
         replaceUrlPlaceholder("base_url", Configuration.getEnvArg("api_url"));
+        replaceUrlPlaceholder("itemNumber", String.valueOf(itemNumber));
     }
 }

@@ -1,0 +1,12 @@
+{
+  "Data": [
+    {
+      "cd_ItemNumber": "regex:[\\d]",
+      "cd_PriceList": "type:String",
+      "PriceListName": "type:String",
+      "PriceListCurrency": "type:String"
+    }
+  ],
+  "Errors": [],
+  "Succeeded": true
+}
