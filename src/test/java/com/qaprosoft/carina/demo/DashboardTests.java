@@ -77,15 +77,16 @@ public class DashboardTests implements IAbstractTest {
         dashboardHomePage.clickAddNewWidgetButton();
         addNewWidget.selectWidget(1);
         softAssert.assertFalse(dashboardHomePage.isWidgetPresent(), "Widget is not removed from dashboard");
+        dashboardHomePage.signOut();
         softAssert.assertAll();
     }
     @TestRailCases(testCasesId = "7,8")
     @Test(groups ={"MA"})
     public void verifyPossibilityItemAdding(){
-        String itemNumber = "000000000001";
-        String itemName = "TEST_PRODUCT";
         loginPage.open();
         loginPage.login(R.TESTDATA.get("email"), R.TESTDATA.get("password"));
+        String itemNumber = "000000000001";
+        String itemName = "TEST_PRODUCT";
         dashboardHomePage.openPriceObjectElementByName("Items");
         ItemsPage itemsPage = new ItemsPage(getDriver());
         softAssert.assertTrue(itemsPage.isPageOpened(), "Items page is not opened");
@@ -97,6 +98,5 @@ public class DashboardTests implements IAbstractTest {
         softAssert.assertFalse(itemsPage.isItemByNumberPresent(itemNumber), "Item was not removed");
         softAssert.assertAll();
     }
-
 
 }
