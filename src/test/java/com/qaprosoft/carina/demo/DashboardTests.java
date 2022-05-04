@@ -52,7 +52,7 @@ public class DashboardTests implements IAbstractTest {
 
 
 
-    @TestRailCases(testCasesId = "C1,2")
+    @TestRailCases(testCasesId = "1,2")
     @Test(groups ={"MA"})
     public void verifyPossibilityLoginAndLogout(){
         SoftAssert softAssert = new SoftAssert();
