@@ -22,6 +22,7 @@ import com.qaprosoft.carina.core.foundation.api.annotation.SuccessfulHttpStatus;
 import com.qaprosoft.carina.core.foundation.api.http.HttpMethodType;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import com.qaprosoft.carina.core.foundation.utils.Configuration;
+import com.qaprosoft.carina.core.foundation.utils.R;
 
 @Endpoint(url = "${base_url}/api/priceobjects/Items/${itemNumber}/ManualPrices", methodType = HttpMethodType.GET)
 @ResponseTemplatePath(path = "api/objects/_get/rs.json")
@@ -30,7 +31,8 @@ import com.qaprosoft.carina.core.foundation.utils.Configuration;
 public class GetItemByNumber extends AbstractApiMethodV2 {
 
     public GetItemByNumber(String itemNumber) {
-        replaceUrlPlaceholder("base_url", Configuration.getEnvArg("api_url"));
+        setHeaders("Authorization=Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6InNvbHZkLnZpa3RvcnlpYS5rYXBpbnVzIiwic3ViIjoic29sdmQudmlrdG9yeWlhLmthcGludXMiLCJyb2xlIjoiQWRtaW5pc3RyYXRvciIsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IjViOTE5YWY0MmU0YTQ5OGViNGM3OTA5ZWUzMDJiMDkwIiwiZXhwIjoxNjUxNjY2Mzc4LCJuYmYiOjE2NTE2NjQ1Nzh9.hT1Juv-zHXRcAFKX-lbGxSOLlIl44omQr8IHxoAn5l8");
+        replaceUrlPlaceholder("base_url", R.CONFIG.get("api_url"));
         replaceUrlPlaceholder("itemNumber", String.valueOf(itemNumber));
     }
 }

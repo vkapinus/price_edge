@@ -24,6 +24,8 @@ import com.qaprosoft.carina.demo.gui.components.AddNewWidget;
 import com.qaprosoft.carina.demo.gui.pages.ItemsPage;
 import com.qaprosoft.carina.demo.gui.pages.LoginPage;
 import com.zebrunner.agent.core.annotation.Maintainer;
+import com.zebrunner.agent.core.annotation.TestRailCaseId;
+import com.zebrunner.agent.core.registrar.TestRail;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -45,6 +47,7 @@ public class DashboardTests implements IAbstractTest {
 
     @BeforeSuite
      void openLoginPage(){
+        TestRail.setSuiteId("1");
         loginPage = new LoginPage(getDriver());
         loginPage.open();
         loginPage.login(R.TESTDATA.get("email"), R.TESTDATA.get("password"));
@@ -52,7 +55,7 @@ public class DashboardTests implements IAbstractTest {
 
 
 
-    @TestRailCases(testCasesId = "1,2")
+    @TestRailCaseId({"1", "2"})
     @Test(groups ={"MA"})
     public void verifyPossibilityLoginAndLogout(){
         SoftAssert softAssert = new SoftAssert();

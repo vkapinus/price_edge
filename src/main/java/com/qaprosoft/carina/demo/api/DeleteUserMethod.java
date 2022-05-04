@@ -28,9 +28,11 @@ import com.qaprosoft.carina.core.foundation.utils.Configuration;
 @RequestTemplatePath(path = "api/objects/_delete/rq.json")
 @ResponseTemplatePath(path = "api/objects/_delete/rs.json")
 @SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)
+
 public class DeleteUserMethod extends AbstractApiMethodV2 {
 
     public DeleteUserMethod() {
         replaceUrlPlaceholder("base_url", Configuration.getEnvArg("api_url"));
     }
+
 }
