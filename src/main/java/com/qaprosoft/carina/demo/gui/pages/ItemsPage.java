@@ -55,7 +55,7 @@ public class ItemsPage extends AbstractPage {
     public void deleteItemByNumber(String itemNum){
         pause(3);
         itemsCheckboxes.get(9).click();
-        pause(5);
+        pause(3);
         deleteSelectedButton.click();
         if(yesButton.isPresent()){
             yesButton.click();

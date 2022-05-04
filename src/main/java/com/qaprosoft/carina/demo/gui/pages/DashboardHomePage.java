@@ -116,11 +116,12 @@ public class DashboardHomePage extends AbstractPage {
     }
 
     public boolean isWidgetPresent(){
-        pause(3);
+        pause(2);
         return widgets.isPresent();
     }
 
     public void removeWidget(){
+        pause(1);
         widgets.click();
         actionsButton.click();
         removeWidget.click();
