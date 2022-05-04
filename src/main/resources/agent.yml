@@ -5,7 +5,7 @@ reporting:
     hostname: https://solvdinternal.zebrunner.com
     access-token: i44SWrL2eZOSBkCK1w94HsWt1V8GzMxZdaoPlgrCXRFMxNicRS
   run:
-    display-name: Smoke suit
+    display-name: Smoke suite
 #    build: 2.5.3.96-SNAPSHOT
     environment: PROD
     #    locale: en_US
