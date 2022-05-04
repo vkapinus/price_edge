@@ -6,7 +6,7 @@ reporting:
     access-token: i44SWrL2eZOSBkCK1w94HsWt1V8GzMxZdaoPlgrCXRFMxNicRS
   run:
     display-name: Smoke suit
-    build: 2.5.3.96-SNAPSHOT
+#    build: 2.5.3.96-SNAPSHOT
     environment: PROD
     #    locale: en_US
 #    retry-known-issues: false

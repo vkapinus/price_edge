@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class APITest{
     @Test
-    public void testItemByNumber() {
+    public void testGetItemByNumber() {
         String number = "0.001";
         GetItemByNumber getItemMethod = new GetItemByNumber(number);
         getItemMethod.callAPIExpectSuccess();
