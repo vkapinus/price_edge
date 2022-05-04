@@ -8,6 +8,7 @@
 	<parameter name="jenkinsEmail" value="vkapinus@gmail.com"/>
   
 	<parameter name="jenkinsRegressionPipeline" value="web_regression, full_regression"/>
+	<parameter name="booleanParam::testrail_enabled::import results to test rail" value="true" />
 
 	<parameter name="jenkinsRegressionMatrix_full_regression" value="browser: chrome; browser: firefox; browser: safari"/>
 	<parameter name="jenkinsJobExecutionOrder" value="1"/>
