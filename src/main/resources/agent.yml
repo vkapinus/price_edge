@@ -1,18 +1,18 @@
 reporting:
   enabled: true
-  project-key: PEDGE
+  project-key: DEF
   server:
-    hostname: https://solvdinternal.zebrunner.com
-    access-token: i44SWrL2eZOSBkCK1w94HsWt1V8GzMxZdaoPlgrCXRFMxNicRS
+    hostname: http://3.250.103.56
+    access-token: X96vwSD2XUfaynyuBkxERi171B5MdMOmYiSCtxsQFp78Ct7H3x
   run:
-    display-name: Smoke suite
-#    build: 2.5.3.96-SNAPSHOT
-    environment: PROD
+    display-name: MA suite
+    #    build: 2.5.3.96-SNAPSHOT
+    environment: QA
     #    locale: en_US
 #    retry-known-issues: false
 #  notification:
 #    notify-on-each-failure: true
-#    slack-channels: automation, dev-team
+#    slack-channels: test-test
 #    ms-teams-channels: automation, qa-team
 #    emails: boss@example.com
 #  milestone:
